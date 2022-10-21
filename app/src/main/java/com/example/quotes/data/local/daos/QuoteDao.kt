@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface QuoteDao {
-    @Insert
+    @Insert //nivel de base de datos
     suspend fun insert(quote: QuoteEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -2,22 +2,29 @@ package com.example.quotes.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.quotes.data.local.QuoteProvider
 import com.example.quotes.domain.model.QuoteModel
+import com.example.quotes.domain.usecase.GetQuoteRandomUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class QuoteViewModel : ViewModel() {
 
-    private val _quoteModel = MutableStateFlow(QuoteModel("",""))
-    val quoteModel: StateFlow<QuoteModel> = _quoteModel
+@HiltViewModel
+class QuoteViewModel
+@Inject constructor(private val getQuoteRandomUseCase: GetQuoteRandomUseCase
+): ViewModel() {
 
-    //---  Load data from a suspend fun and mutate state
+    private val quoteModelRandomMutableStateFlow = MutableStateFlow(QuoteModel(0,"",""))
+    val quoteModel: StateFlow<QuoteModel> = quoteModelRandomMutableStateFlow
+
+
     fun randomQuote() {
         viewModelScope.launch {
-            val quote= QuoteProvider.random()
-            _quoteModel.value = quote
+            quoteModelRandomMutableStateFlow.value = getQuoteRandomUseCase.getQuoteRandom().first()
+            //_quoteModel.value = GetQuoteUseCase(quoteDAO).getQuote(1).first()
         }
     }
 }
