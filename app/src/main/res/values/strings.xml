@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Quotes</string>
-    <string name="action_settings">Settiongs</string>
-    <string name="quotes">Cites Celebrate</string>
+    <string name="action_settings">Settings</string>
+    <string name="quotes">Citas Celebres</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_Close">Close</string>
+    <string name="author">Nombre del autor</string>
+    <string name="quote">Agregar Cita</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

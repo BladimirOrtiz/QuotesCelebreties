@@ -15,14 +15,21 @@
         android:theme="@style/Theme.Quotes"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.view.QuoteRandomActivity"
-            android:exported="true">
+            android:name=".presentation.View.QuoteAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.View.NavigationDrawerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.View.QuoteRandomActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
